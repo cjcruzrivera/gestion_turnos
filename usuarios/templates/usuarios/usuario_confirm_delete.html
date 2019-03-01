@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- TODO: Confirmar eliminacion con un modal -->
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group" align="center">
+                        <h1>¿Seguro que desea borrar el empleado {{ usuario.first_name }} {{ usuario.last_name }}? </h1> <br>
+                    </div>
+                    <form class="forms-sample" method="post">{% csrf_token %}
+                        <input class="btn btn-danger" type="submit" value="Confirmar Borrado">
+                        <a style="padding: 0.56rem 1.375rem; width: 178px" href="{% url 'list_sucursales' %}" class="btn btn-primary">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
