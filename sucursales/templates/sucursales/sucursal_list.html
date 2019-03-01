@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+    
+    {% if sucursal_list %}
+    <h2>SUCURSALES</h2>
+    {% else %}
+        <h2>No hay sucursales registradas</h2>
+    {% endif %}
+        
+{% endblock content %}
+    
