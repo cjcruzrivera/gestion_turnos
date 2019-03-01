@@ -4,12 +4,74 @@
 
 
 {% block content %}
-    
-    {% if sucursal_list %}
-    <h2>SUCURSALES</h2>
-    {% else %}
+<div class="content-wrapper">
+    <a class="btn btn-primary" style="color:white" href="{% url 'create_sucursales' %}">NUEVA SUCURSAL</a><hr>
+    <div class="row">
+        {% if sucursal_list %}
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">SUCURSALES</h2>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width: 15px;">Acciones</th>
+                                <th>
+                                    Código
+                                </th>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Dirección
+                                </th>
+                                <th>
+                                    Localidad
+                                </th>
+                                <th>
+                                    Telefono
+                                </th>
+                                <th>
+                                    Tipo
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sucursal in sucursal_list %}
+                            <tr>
+                                <td>
+                                        <a style="padding: 5px 0px 5px 5px" class="btn btn-sm btn-info" href="{% url 'update_sucursales' sucursal.codigo %}"> <i class="icon-sm mdi mdi-pencil"></i></a>
+                                        <a style="padding: 5px 0px 5px 5px" class="btn btn-sm btn-danger" href="#"> <i class="icon-sm mdi mdi-delete"></i></a>
+                                </td>
+                                <td class="py-1">
+                                    {{sucursal.codigo}}
+                                </td>
+                                <td>
+                                    {{sucursal.nombre}}
+                                </td>
+                                <td>
+                                    {{sucursal.direccion}}
+                                </td>
+                                <td>
+                                    {{sucursal.localidad}}
+                                </td>
+                                <td>
+                                    {{sucursal.telefono}}
+                                </td>
+                                <td>
+                                    {{sucursal.get_tipo_display}}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% else %}
         <h2>No hay sucursales registradas</h2>
-    {% endif %}
-        
+        {% endif %}
+    </div>
+</div>
+
 {% endblock content %}
-    

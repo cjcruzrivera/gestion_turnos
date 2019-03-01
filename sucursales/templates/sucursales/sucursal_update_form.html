@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group" align="center">
+                        <h1>Actualizar Sucursal {{ sucursal.nombre}} </h1> <br>
+                    </div>
+                    <form class="forms-sample" method="post">{% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Guardar Sucursal">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
