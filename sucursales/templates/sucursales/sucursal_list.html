@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-
+<!-- TODO: mensaje de confirmacion de edicion -->
 
 {% block content %}
 <div class="content-wrapper">
@@ -41,7 +41,7 @@
                             <tr>
                                 <td>
                                         <a style="padding: 5px 0px 5px 5px" class="btn btn-sm btn-info" href="{% url 'update_sucursales' sucursal.codigo %}"> <i class="icon-sm mdi mdi-pencil"></i></a>
-                                        <a style="padding: 5px 0px 5px 5px" class="btn btn-sm btn-danger" href="#"> <i class="icon-sm mdi mdi-delete"></i></a>
+                                        <a style="padding: 5px 0px 5px 5px" class="btn btn-sm btn-danger" href="{% url 'delete_sucursales' sucursal.codigo %}"> <i class="icon-sm mdi mdi-delete"></i></a>
                                 </td>
                                 <td class="py-1">
                                     {{sucursal.codigo}}

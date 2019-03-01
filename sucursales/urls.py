@@ -13,12 +13,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import SucursalListView, SucursalCreateView, SucursalUpdateView
+from .views import SucursalListView, SucursalCreateView, SucursalUpdateView, SucursalDeleteView
 
 # TODO: personalizar urlpatterns para modificar names
 urlpatterns = [
     path('', SucursalListView.as_view(), name='list_sucursales'),
     path('create/', SucursalCreateView.as_view(), name='create_sucursales'),
     path('update/<int:pk>', SucursalUpdateView.as_view(), name='update_sucursales'),
+    path('delete/<int:pk>', SucursalDeleteView.as_view(), name='delete_sucursales'),
     # TODO: SucursalDetailView
 ]

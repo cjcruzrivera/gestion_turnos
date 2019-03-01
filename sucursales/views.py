@@ -32,9 +32,14 @@ class SucursalUpdateView(UpdateView):
     form_class = SucursalForm
     template_name_suffix = '_update_form'
     success_url = reverse_lazy('list_sucursales')
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         usuario = self.request.user
         context['usuario'] = usuario
         return context
+
+class SucursalDeleteView(DeleteView):
+    model = Sucursal
+    success_url = reverse_lazy('list_sucursales')
+
