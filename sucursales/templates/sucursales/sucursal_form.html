@@ -13,8 +13,8 @@
                     <form class="forms-sample" method="post">{% csrf_token %}
                         {{ form.as_p }}
                         <div class="form-group" align="center">
-                            <input class="btn btn-primary" type="submit" value="Guardar Sucursal">
-                            <a style="padding: 0.56rem 1.375rem; width: 178px" href="{% url 'list_sucursales' %}" class="btn btn-danger">Cancelar</a>
+                            <input class="btn btn-rounded btn-success" type="submit" value="Guardar Sucursal">
+                            <a style="padding: 0.56rem 1.375rem; width: 178px" href="{% url 'list_sucursales' %}" class="btn btn-rounded btn-danger">Cancelar</a>
                         </div>
                     </form>
                 </div>

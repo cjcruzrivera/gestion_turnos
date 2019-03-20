@@ -13,9 +13,12 @@
                     </div>
                     <form class="forms-sample" method="post">{% csrf_token %}
                         {{ form.as_p }}
-                        <input class="btn btn-confirm" type="submit" value="Guardar Sucursal">
-                        <a style="padding: 0.56rem 1.375rem; width: 178px" href="{% url 'list_sucursales' %}" 
-                            class="btn btn-danger">Cancelar</a>                        
+                        <br>
+                        <div align="center">
+                            <input class="btn btn-rounded btn-success" type="submit" value="Guardar Sucursal">
+                            <a style="padding: 0.56rem 1.375rem; width: 178px" href="{% url 'list_sucursales' %}" 
+                                class="btn btn-rounded btn-danger">Cancelar</a>      
+                        </div>                  
                     </form>
                 </div>
             </div>
