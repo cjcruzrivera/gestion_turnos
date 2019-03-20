@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="main-panel">                             
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">                                  
+            <div class="card-body">                  
+                <div class="form-group" align="center">
+                    <h1>BANCO XYZ</h1> <br>
+                </div> 
+
+                <div id="registro"> 
+                    <br>
+                    <form class="forms-sample" enctype="multipart/form-data" method="POST">  
+                        {% csrf_token %}  
+                        {{ form.as_p }}                                                                                 
+
+                        <div class="form-group" align="center">                                        
+                            <input type="submit" class="btn btn-rounded btn-success" value="Guardar">
+                            <a type="reset" class="btn btn-rounded btn-danger" href="{% url 'list_publicidad' %}">Cancelar</a>                                            
+                        </div>
+                    </form>
+                </div> 
+            </div>                                                                     
+        </div>
+    </div> 
+</div>
+{% endblock content %}
