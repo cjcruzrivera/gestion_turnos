@@ -26,6 +26,9 @@ class PublicidadListView(ListView):
         context['usuario'] = usuario
         return context
 
+def mostrar_publicidad(request):
+    return render(request, 'publicidad/mostrar_publicidad.html', {})
+
 class PublicidadUpdateView(UpdateView):
     model = Publicidad
     form_class = PublicidadForm

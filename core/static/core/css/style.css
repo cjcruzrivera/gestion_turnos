@@ -16304,3 +16304,13 @@ ul {
     border-left: 3px solid rgba(255, 255, 255, 0.2); } }
 
 /*# sourceMappingURL=maps/style.css.map */
+/* slick */
+.slide {
+  width: 80%;
+  height: 300px;  
+  background-image: linear-gradient(120deg, #00e4d0, #5983e8);
+}
+
+.slick_dots {
+  bottom: 60px;
+}

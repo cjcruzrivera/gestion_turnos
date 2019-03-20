@@ -5,7 +5,7 @@
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body" align="center">
-            <div id="listarUsuarios">
+            <div>
                 {% if object_list %}
                 <table class="table table-striped table-responsive">
                     <tr>
@@ -24,7 +24,9 @@
                         <td>{{publicidad.codigo}}</td>
                         <td>{{publicidad.nombre}}</td>
                         <td>{{publicidad.descripcion}}</td>
-                        <td class="py-1">{{publicidad.imagen}}</td>
+                        <td class="py-1">                                                           
+                            <img src="{% static '{{publicidad.imagen}}' %}" alt="{{publicidad.codigo}}">
+                        </td>
                     </tr> 
                     {% endfor %}                 
                 </table>

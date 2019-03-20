@@ -11,8 +11,11 @@
                         <h1>¿Seguro que desea borrar la publicidad {{ publicidad.nombre}}? </h1> <br>
                     </div>
                     <form class="forms-sample" method="post">{% csrf_token %}
-                        <input class="btn btn-danger" type="submit" value="Confirmar Borrado">
-                        <a style="padding: 0.56rem 1.375rem; width: 178px" href="{% url 'list_publicidad' %}" class="btn btn-primary">Cancelar</a>
+                        <div align="center">
+                            <input class="btn btn-rounded btn-danger" type="submit" value="Confirmar Borrado">
+                            <a style="padding: 0.56rem 1.375rem; width: 178px" href="{% url 'list_publicidad' %}" 
+                                class="btn btn-rounded btn-primary">Cancelar</a>
+                        </div>
                     </form>
                 </div>
             </div>
