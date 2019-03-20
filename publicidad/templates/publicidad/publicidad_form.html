@@ -1,6 +1,5 @@
 {% extends 'core/base.html' %}
-{% load static %}
-{% load bootstrap3 %}
+{% load staticfiles %}
 
 {% block content %}
 <div class="main-panel">                             
@@ -14,24 +13,11 @@
                 <div id="registro"> 
                     <br>
                     <form class="forms-sample" enctype="multipart/form-data" method="POST">  
-                        {% csrf_token %}                                                           
-                        <div class="form-group">
-                            <label>Nombre publicidad:</label>
-                            {% bootstrap_field form.nombre %}
-                        </div>  
-
-                        <div class="form-group">
-                            <label>Descripcion:</label>
-                            {% bootstrap_field form.descripcion %}
-                        </div> 
-
-                        <div class="form-group">
-                            <label for="inputImg">Imagen:</label>
-                            <input type="image" class="form-control" id="inputImg">
-                        </div> 
+                        {% csrf_token %}  
+                        {{ form.as_p }}                                                                                 
 
                         <div class="form-group" align="center">                                        
-                            <button type="submit" class="btn btn-rounded btn-success">Guardar</button>
+                            <input type="submit" class="btn btn-rounded btn-success" value="Guardar">
                             <button type="reset" class="btn btn-rounded btn-danger">Cancelar</button>                                            
                         </div>
                     </form>
