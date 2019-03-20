@@ -6,8 +6,6 @@ from django.urls import reverse_lazy
 from .models import Publicidad
 from .forms import PublicidadForm
 
-
-
 class PublicidadCreateView(CreateView):
     model = Publicidad
     form_class = PublicidadForm
@@ -18,6 +16,31 @@ class PublicidadCreateView(CreateView):
         usuario = self.request.user
         context['usuario'] = usuario
         return context
+
+class PublicidadListView(ListView):
+    model = Publicidad
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        usuario = self.request.user
+        context['usuario'] = usuario
+        return context
+
+class PublicidadUpdateView(UpdateView):
+    model = Publicidad
+    form_class = PublicidadForm
+    template_name_suffix = '_update_form'
+    success_url = reverse_lazy('list_publicidad')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        usuario = self.request.user
+        context['usuario'] = usuario
+        return context
+
+class PublicidadDeleteView(DeleteView):
+    model = Publicidad
+    success_url = reverse_lazy('list_publicidad')
 
 '''
 def upload_publicidad_view(request):

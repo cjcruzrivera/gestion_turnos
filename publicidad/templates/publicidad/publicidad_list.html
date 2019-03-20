@@ -1,32 +1,35 @@
+{% extends 'core/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
 <div class="col-md-12 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body" align="center">
-              <div id="listarUsuarios">
+    <div class="card">
+        <div class="card-body" align="center">
+            <div id="listarUsuarios">
+                {% if object_list %}
                 <table class="table table-striped table-responsive">
-                  <tr>
-                    <th></th>
-                    <th>Nombre completo</th>                        
-                    <th>Edad</th>
-                    <th>Cargo</th>
-                  </tr>
-                  <tr>
-                    <td class="py-1">
-                      <img src="../../images/faces-clipart/pic-1.png" alt="image" />
-                    </td>
-                    <td>Carlos Felipe Montoya</td>
-                    <td>21</td>
-                    <td>Cajero VIP</td>
-                  </tr>
-                  <tr>
-                    <td class="py-1">
-                      <img src="../../images/faces-clipart/pic-2.png" alt="image" />
-                    </td>
-                    <td>Diana Melissa Millares</td>
-                    <td>22</td>
-                    <td>Cajero D</td>
-                  </tr>
+                    <tr>
+                        <th>Codigo publicidad</th>
+                        <th>Nombre publicidad</th>
+                        <th>Descripcion publicidad</th>
+                        <th></th>                        
+                    </tr>
+                    {% for solicitud in object_list %}
+                    <tr>                
+                        <td>{{publicidad.codigo}}</td>
+                        <td>{{publicidad.nombre}}</td>
+                        <td>{{publicidad.descripcion}}</td>
+                        <td class="py-1">
+                            {{publicidad.imagen}}
+                        </td>
+                    </tr> 
+                    {% endfor %}                 
                 </table>
-              </div>
+                {% else %}
+                <h3>No hay publicidad</h3>
+                {% endif %}
             </div>
-          </div>
         </div>
+    </div>
+</div>
+{% endblock content %}
