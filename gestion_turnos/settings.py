@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'login',
     'sucursales',
     'usuarios',
+    'publicidad',
 ]
 
 MIDDLEWARE = [
@@ -122,7 +123,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'media')
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'static-only')
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 STATICFILES_DIRS = (
   os.path.join(SITE_ROOT, 'static/'),
+  os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'static'),
+)
+
+TEMPLATES_DIRS = (
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'templates')
 )
