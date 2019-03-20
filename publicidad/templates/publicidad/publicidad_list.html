@@ -14,14 +14,16 @@
                         <th>Descripcion publicidad</th>
                         <th></th>                        
                     </tr>
-                    {% for solicitud in object_list %}
-                    <tr>                
+                    {% for publicidad in publicidad_list %}
+                    <tr>  
+                        <td>
+                            <a style="padding: 5px 0px 5px 5px" class="btn btn-sm btn-info" href="{% url 'update_publicidad' publicidad.codigo %}"> <i class="icon-sm mdi mdi-pencil"></i></a>
+                            <a style="padding: 5px 0px 5px 5px" class="btn btn-sm btn-danger" href="{% url 'delete_publicidad' publicidad.codigo %}"> <i class="icon-sm mdi mdi-delete"></i></a>
+                        </td>              
                         <td>{{publicidad.codigo}}</td>
                         <td>{{publicidad.nombre}}</td>
                         <td>{{publicidad.descripcion}}</td>
-                        <td class="py-1">
-                            {{publicidad.imagen}}
-                        </td>
+                        <td class="py-1">{{publicidad.imagen}}</td>
                     </tr> 
                     {% endfor %}                 
                 </table>
