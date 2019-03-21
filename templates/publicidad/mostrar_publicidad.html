@@ -1,6 +1,14 @@
 {% extends 'core/base.html' %}
 {% load staticfiles %}
 
+
+{% block extracss %}
+        <!-- slick -->
+    <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
+{% endblock extracss %}
+    
+
 {% block content %}
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
@@ -39,3 +47,9 @@
     </div>        
 </div>
 {% endblock %}
+
+
+{% block extrajs %}
+<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>    
+{% endblock extrajs %}
+    
