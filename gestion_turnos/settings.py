@@ -140,7 +140,3 @@ TEMPLATES_DIRS = (
     os.path.join(os.path.dirname(os.path.dirname(__file__)),
                  'static', 'templates')
 )
-
-FIXTURE_DIRS = (
-    '/core/fixtures/',
-)

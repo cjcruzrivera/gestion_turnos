@@ -1,1 +1,159 @@
-[{"model": "usuarios.tipo", "pk": 2, "fields": {"nombre": "admin"}}, {"model": "usuarios.tipo", "pk": 3, "fields": {"nombre": "gerente"}}, {"model": "usuarios.tipo", "pk": 4, "fields": {"nombre": "general"}}, {"model": "usuarios.tipo", "pk": 5, "fields": {"nombre": "ie"}}, {"model": "usuarios.tipo", "pk": 6, "fields": {"nombre": "s"}}, {"model": "usuarios.tipo", "pk": 7, "fields": {"nombre": "d"}}, {"model": "usuarios.tipo", "pk": 8, "fields": {"nombre": "vip"}}, {"model": "usuarios.usuario", "pk": 1, "fields": {"password": "pbkdf2_sha256$120000$SK8tSWOLTdYj$CCoIR6RHi7y0uFI7y8wYWNsWgS30HjPU1gRwjLvr9pc=", "last_login": "2019-03-20T23:50:07.626Z", "is_superuser": true, "username": "camilojcr", "first_name": "Camilo Jos\u00e9", "last_name": "Cruz Rivera", "email": "mail@mail.com", "is_staff": true, "is_active": true, "date_joined": "2019-03-01T09:31:47Z", "rol": 2, "sucursal": "1234", "fecha_nacimiento": "2019-03-01", "groups": [], "user_permissions": []}}, {"model": "usuarios.usuario", "pk": 4, "fields": {"password": "!bWbfc3zkt7mp6mRlN5uJkTmf0n6o9cFO5vo69npX", "last_login": null, "is_superuser": false, "username": "cajero_general", "first_name": "Pedro", "last_name": "Perez", "email": "", "is_staff": false, "is_active": true, "date_joined": "2019-03-21T03:13:53.479Z", "rol": 4, "sucursal": "1234", "fecha_nacimiento": "1993-12-07", "groups": [], "user_permissions": []}}, {"model": "usuarios.usuario", "pk": 5, "fields": {"password": "!eN5q1C7U1KjAtbGXeXo3lOHjcaA8JKdQzjTfmb4R", "last_login": null, "is_superuser": false, "username": "cajero_ie", "first_name": "Eustaquio", "last_name": "Ramirez", "email": "", "is_staff": false, "is_active": true, "date_joined": "2019-03-21T03:17:40.478Z", "rol": 5, "sucursal": "1234", "fecha_nacimiento": "1993-12-07", "groups": [], "user_permissions": []}}, {"model": "usuarios.usuario", "pk": 6, "fields": {"password": "!uSCITUbdqyoApM5N3utrRXGe6hnP7CFLdVuTWSVm", "last_login": null, "is_superuser": false, "username": "cajero_seguro", "first_name": "Maribel", "last_name": "Florez", "email": "", "is_staff": false, "is_active": true, "date_joined": "2019-03-21T03:18:41.420Z", "rol": 6, "sucursal": "1234", "fecha_nacimiento": "1993-12-07", "groups": [], "user_permissions": []}}, {"model": "sucursales.sucursal", "pk": "1234", "fields": {"nombre": "Oficina Principal", "direccion": "Calle Falsa 1234", "localidad": "Cali", "telefono": "2345235", "tipo": "P", "actual": false}}, {"model": "sucursales.sucursal", "pk": "1235", "fields": {"nombre": "Sucursal segunda", "direccion": "Calle Falsa 4321", "localidad": "Cali", "telefono": "123654", "tipo": "G", "actual": false}}]
+[
+    {
+        "model": "usuarios.tipo",
+        "pk": 2,
+        "fields": {
+            "nombre": "admin"
+        }
+    },
+    {
+        "model": "usuarios.tipo",
+        "pk": 3,
+        "fields": {
+            "nombre": "gerente"
+        }
+    },
+    {
+        "model": "usuarios.tipo",
+        "pk": 4,
+        "fields": {
+            "nombre": "general"
+        }
+    },
+    {
+        "model": "usuarios.tipo",
+        "pk": 5,
+        "fields": {
+            "nombre": "ie"
+        }
+    },
+    {
+        "model": "usuarios.tipo",
+        "pk": 6,
+        "fields": {
+            "nombre": "s"
+        }
+    },
+    {
+        "model": "usuarios.tipo",
+        "pk": 7,
+        "fields": {
+            "nombre": "d"
+        }
+    },
+    {
+        "model": "usuarios.tipo",
+        "pk": 8,
+        "fields": {
+            "nombre": "vip"
+        }
+    },
+    {
+        "model": "usuarios.usuario",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$120000$SK8tSWOLTdYj$CCoIR6RHi7y0uFI7y8wYWNsWgS30HjPU1gRwjLvr9pc=",
+            "last_login": "2019-03-20T23:50:07.626Z",
+            "is_superuser": true,
+            "username": "camilojcr",
+            "first_name": "Camilo Jos\u00e9",
+            "last_name": "Cruz Rivera",
+            "email": "mail@mail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2019-03-01T09:31:47Z",
+            "rol": 2,
+            "sucursal": "1234",
+            "fecha_nacimiento": "2019-03-01",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "usuarios.usuario",
+        "pk": 4,
+        "fields": {
+            "password": "!bWbfc3zkt7mp6mRlN5uJkTmf0n6o9cFO5vo69npX",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "cajero_general",
+            "first_name": "Pedro",
+            "last_name": "Perez",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2019-03-21T03:13:53.479Z",
+            "rol": 4,
+            "sucursal": "1234",
+            "fecha_nacimiento": "1993-12-07",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "usuarios.usuario",
+        "pk": 5,
+        "fields": {
+            "password": "!eN5q1C7U1KjAtbGXeXo3lOHjcaA8JKdQzjTfmb4R",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "cajero_ie",
+            "first_name": "Eustaquio",
+            "last_name": "Ramirez",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2019-03-21T03:17:40.478Z",
+            "rol": 5,
+            "sucursal": "1234",
+            "fecha_nacimiento": "1993-12-07",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "usuarios.usuario",
+        "pk": 6,
+        "fields": {
+            "password": "!uSCITUbdqyoApM5N3utrRXGe6hnP7CFLdVuTWSVm",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "cajero_seguro",
+            "first_name": "Maribel",
+            "last_name": "Florez",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2019-03-21T03:18:41.420Z",
+            "rol": 6,
+            "sucursal": "1234",
+            "fecha_nacimiento": "1993-12-07",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "sucursales.sucursal",
+        "pk": "1234",
+        "fields": {
+            "nombre": "Oficina Principal",
+            "direccion": "Calle Falsa 1234",
+            "localidad": "Cali",
+            "telefono": "2345235",
+            "tipo": "P",
+            "actual": false
+        }
+    },
+    {
+        "model": "sucursales.sucursal",
+        "pk": "1235",
+        "fields": {
+            "nombre": "Sucursal segunda",
+            "direccion": "Calle Falsa 4321",
+            "localidad": "Cali",
+            "telefono": "123654",
+            "tipo": "G",
+            "actual": false
+        }
+    }
+]

@@ -10,6 +10,7 @@ class UsuarioForm(UserCreationForm):
         'duplicate_username': 'Nombre de usuario ya en uso. Ingrese otro',
         'password_mismatch': "Los dos passwords no coinciden.",
     }
+
     class Meta:
         model = Usuario
 
@@ -42,20 +43,22 @@ class UsuarioForm(UserCreationForm):
         try:
             Usuario._default_manager.get(username=username)
             # if the user exists, then let's raise an error message
-
-            raise forms.ValidationError(
-                # user my customized error message
-                self.error_messages['duplicate_username'],
-
-                code='duplicate_username',  # set the error message key
-
-            )
         except Usuario.DoesNotExist:
+            pass
+        else:
+            if not self.is_update:
+                raise forms.ValidationError(
+                    # user my customized error message
+                    self.error_messages['duplicate_username'],
+
+                    code='duplicate_username',  # set the error message key
+                )
             return username  # great, this user does not exist so we can continue the registration process
 
     def clean_password1(self):
         password1 = self.cleaned_data.get("password1")
         validate_password(password1)
+        return password1
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -66,3 +69,7 @@ class UsuarioForm(UserCreationForm):
                 code='password_mismatch',
             )
         return password2
+
+    def __init__(self, is_update=False, **kwargs):
+        self.is_update = is_update
+        super(UsuarioForm, self).__init__(**kwargs)
