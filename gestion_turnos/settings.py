@@ -58,7 +58,7 @@ ROOT_URLCONF = 'gestion_turnos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,15 +124,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'media')
-STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'static-only')
+MEDIA_ROOT = os.path.join(os.path.dirname(
+    os.path.dirname(__file__)), 'static', 'media')
+STATIC_ROOT = os.path.join(os.path.dirname(
+    os.path.dirname(__file__)), 'static', 'static-only')
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
-STATICFILES_DIRS = (
-  os.path.join(SITE_ROOT, 'static/'),
-  os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'static'),
-)
 
-TEMPLATES_DIRS = (
-    os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'templates')
-)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
+]

@@ -1,7 +1,11 @@
+""" Models from usuario app """
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class Tipo(models.Model):
+    """
+    Clase que almacena los tipos de usuarios
+    """
     TIPOS = (
         ('admin', 'Gerente Administrador'),
         ('gerente', 'Gerente'),
@@ -19,10 +23,12 @@ class Tipo(models.Model):
 # Create your models here.
 class Usuario(AbstractUser):
     '''
+    Clase que almacena los datos de los usuarios del sistema
+
     estos campos se heredan de AbastractUser
     username = models.CharField(max_length=20)
-    nombre = models.CharField(max_length=60)
-    apellidos = models.CharField(max_length=60)
+    first_name = models.CharField(max_length=60)
+    last_name = models.CharField(max_length=60)
     email = models.EmailField()
     password = models.CharField(max_length=20)
     '''
