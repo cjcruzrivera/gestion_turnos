@@ -1,0 +1,54 @@
+{% load static %}
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item nav-profile">
+            <div class="nav-link">
+                <div class="user-wrapper">
+                    <div class="profile-image">
+                        <img src="{% static 'core/images/faces/face1.jpg'%}" alt="profile image">
+                    </div>
+                    <div class="text-wrapper">
+                        <p class="profile-name">{{ usuario.first_name }} {{ usuario.last_name}}</p>
+                        <div>
+                            <small class="designation text-muted">{{ usuario.rol }}</small>
+                            <span class="status-indicator online"></span>
+                        </div>
+                        <div>
+                            <small class="designation text-muted">{{ usuario.sucursal.nombre }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">
+                <i class="menu-icon mdi mdi-television"></i>
+                <span class="menu-title">Inicio</span>
+            </a>
+        </li>
+
+        {% if usuario.rol.nombre == "admin" %}
+        <li class="nav-item">
+            <a href="{% url 'list_sucursales' %}" class="nav-link">
+                <i class="menu-icon mdi mdi-cube"></i>
+                <span class="menu-title">Sucursales</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'list_usuarios' %}" class="nav-link">
+                <i class="menu-icon mdi mdi-account-location"></i>
+                <span class="menu-title">Empleados</span>
+            </a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="menu-icon mdi mdi-cube"></i>
+                <span class="menu-title">Turnos</span>
+            </a>
+        </li>
+
+
+    </ul>
+</nav>
