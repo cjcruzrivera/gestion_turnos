@@ -1,0 +1,96 @@
+{% load static %}
+
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="{% url 'index' %}">
+            <img style="width: 10%; margin-right: 10px; margin-left: 30px;" src="{% static 'core/images/favicon.png'%}" />
+            <span style="color:grey"> BANCO XYZ</span>
+        </a>
+        <a class="navbar-brand brand-logo-mini" href="{% url 'index' %}">
+            <!-- TODO: poner imagen del usuario -->
+            <img src="{% static 'core/images/favicon.png'%}" alt="logo" />
+        </a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-center">
+
+        <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown">
+                <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="mdi mdi-file-document-box"></i>
+                    <span class="count">7</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                    <div class="dropdown-item">
+                        <p class="mb-0 font-weight-normal float-left">Hay 7 turnos por atender
+                        </p>
+                        <span class="badge badge-info badge-pill float-right">View all</span>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <img src="{% static 'core/images/faces/face4.jpg'%}" alt="image" class="profile-pic">
+                        </div>
+                        <div class="preview-item-content flex-grow">
+                            <h6 class="preview-subject ellipsis font-weight-medium text-dark">David Grey
+                                <span class="float-right font-weight-light small-text">1 Minutes ago</span>
+                            </h6>
+                            <p class="font-weight-light small-text">
+                                The meeting is cancelled
+                            </p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <img src="{% static 'core/images/faces/face2.jpg'%}" alt="image" class="profile-pic">
+                        </div>
+                        <div class="preview-item-content flex-grow">
+                            <h6 class="preview-subject ellipsis font-weight-medium text-dark">Tim Cook
+                                <span class="float-right font-weight-light small-text">15 Minutes ago</span>
+                            </h6>
+                            <p class="font-weight-light small-text">
+                                New product launch
+                            </p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <img src="{% static 'core/images/faces/face3.jpg'%}" alt="image" class="profile-pic">
+                        </div>
+                        <div class="preview-item-content flex-grow">
+                            <h6 class="preview-subject ellipsis font-weight-medium text-dark"> Johnson
+                                <span class="float-right font-weight-light small-text">18 Minutes ago</span>
+                            </h6>
+                            <p class="font-weight-light small-text">
+                                Upcoming board meeting
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown d-none d-xl-inline-block">
+                <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
+                    aria-expanded="false">
+                    <span class="profile-text">Buen dia, {{ usuario.first_name }} {{ usuario.last_name}} !</span>
+                    <img class="img-xs rounded-circle" src="{% static 'core/images/faces/face1.jpg'%}" alt="Profile image">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+
+                    <a class="dropdown-item mt-2" onclick="alert('pendiente')">
+                        Administrar cuenta
+                    </a>
+                    <a href="{% url 'logout' %}" class="dropdown-item">
+                        Cerrar Sesión
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+            data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+        </button>
+    </div>
+</nav>
