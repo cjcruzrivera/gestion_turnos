@@ -42,18 +42,18 @@ class UsuarioForm(UserCreationForm):
 
         try:
             Usuario._default_manager.get(username=username)
-            # if the user exists, then let's raise an error message
         except Usuario.DoesNotExist:
             pass
         else:
             if not self.is_update:
+            # if the user exists, and is not an update then let's raise an error message
                 raise forms.ValidationError(
                     # user my customized error message
                     self.error_messages['duplicate_username'],
 
                     code='duplicate_username',  # set the error message key
                 )
-            return username  # great, this user does not exist so we can continue the registration process
+            return username  # great, this user does not exist or is an update so we can continue the registration process
 
     def clean_password1(self):
         password1 = self.cleaned_data.get("password1")
