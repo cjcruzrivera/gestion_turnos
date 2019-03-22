@@ -14,5 +14,5 @@ class Cliente(models.Model):
         return self.objects.get(actual=True)
 
     def __str__(self):
-        return self.nombre
+        return '%s %s' % (self.nombre, self.apellidos)
 

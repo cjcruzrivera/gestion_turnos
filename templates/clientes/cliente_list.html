@@ -31,11 +31,16 @@
                         <td>{{cliente.codigo}}</td>
                         <td>{{cliente.nombre}}</td>
                         <td>{{cliente.apellidos}}</td>
-                        <td>{{cliente.vip}}</td>
-                        <!-- <td class="py-1">
-                                
-                            <img src="{{publicidad.imagen}}" alt="{{publicidad.codigo}}">
-                        </td> -->
+                        <td>
+
+                            {% if cliente.vip %}
+                            SI
+                            {% else %}
+                            NO
+                            {% endif %}
+
+                        </td>
+
                     </tr>
                     {% endfor %}
                 </table>
