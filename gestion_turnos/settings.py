@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'usuarios',
     'publicidad',
     'clientes',
+    'turno',
 ]
 
 MIDDLEWARE = [
@@ -84,6 +85,17 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'Turnos',
+# 	'USER': 'daniel',
+# 	'PASSWORD': '123456',
+# 	'HOST': 'localhost',
+# 	'PORT': 5432,
+#     }
+# }
 
 AUTH_USER_MODEL = 'usuarios.Usuario'
 

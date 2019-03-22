@@ -1,0 +1,81 @@
+{% extends 'core/base.html' %}
+
+
+{% block extracss %}
+    <style>
+        .main-panel{
+            width: 100% !important;
+        }
+
+    </style>
+{% endblock extracss %}
+    
+
+<!-- EMPTY BLOCKS TO DELETE BASE CONTENT -->
+{% block sidebar %}
+{% endblock sidebar %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+{% block footer %}
+{% endblock footer %}
+
+
+
+{%block content%}
+
+<div class="content" style="width: 100%">
+    <div class="row">
+        <div class="col-12 grid-margin" align="center">
+            <div class="col-md-5" >
+                <div class="card-body">
+                    <center>
+                        <h1>BANCO XYZ</h1>
+                    </center>
+                    <br>
+                    <form method="post">
+                        {%csrf_token%}
+                        {{form.identificacion}}
+                    <hr>
+                    <p class="card-description">Por favor digite su número de cédula</p>
+                    <div class="template-demo">
+                        <button type="button" class="number btn btn-dark btn-rounded btn-fw">1</button>
+                        <button type="button" class="number btn btn-dark btn-rounded btn-fw">2</button>
+                        <button type="button" class="number btn btn-dark btn-rounded btn-fw">3</button>
+                        <button type="button" class="number btn btn-dark btn-rounded btn-fw">4</button>
+                        <button type="button" class="number btn btn-dark btn-rounded btn-fw">5</button>
+                        <button type="button" class="number btn btn-dark btn-rounded btn-fw">6</button>
+                        <button type="button" class="number btn btn-dark btn-rounded btn-fw">7</button>
+                        <button type="button" class="number btn btn-dark btn-rounded btn-fw">8</button>
+                        <button type="button" class="number btn btn-dark btn-rounded btn-fw">9</button>
+                        <button type="reset" class="reset btn btn-danger btn-rounded btn-fw">X</button>
+                        <button type="button" class="btn btn-dark btn-rounded btn-fw">0</button>
+                        <button type="submit" id="submit-btn"  disabled class="btn btn-success btn-rounded btn-fw">✓</button>
+                    </form>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {%endblock%}
+
+    
+    {% block extrajs %}
+        <script>
+            $('.reset').click(function () {
+                $('#submit-btn').prop('disabled', true);                
+            })
+
+            $('.number').click(function () {
+                number = $(this).text();
+                $('#id_identificacion').val($('#id_identificacion').val()+number)
+                tam = $('#id_identificacion').val().length
+                if(tam > 4){
+                    $('#submit-btn').prop('disabled', false);
+                }
+            })
+        </script>
+    {% endblock extrajs %}
+        
