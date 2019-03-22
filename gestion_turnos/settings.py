@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'sucursales',
     'usuarios',
     'publicidad',
+    'turno'
 ]
 
 MIDDLEWARE = [

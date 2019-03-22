@@ -12,8 +12,8 @@ from django.urls import reverse
 
 
 class IDView(TemplateView):
-    template_name = 'id_request.html'
-    success_url = 'turnos: asignar'
+    template_name = 'turno/base_template.html'
+    success_url = '/'
 
     def get (self, request): 
         form =  IdForm 
