@@ -9,8 +9,8 @@ class ClienteForm(forms.ModelForm):
 
 		widgets = {
             'codigo' : forms.TextInput(attrs={'class':'form-control','id':'codigo', 'placeholder': 'Ingrese el codigo del cliente'}),
-            'cedula' : forms.TextInput(attrs={'class':'form-control','id':'cedula', 'placeholder': 'Ingrese el nombre del cliente'}),
-            'apellidos' : forms.TextInput(attrs={'class':'form-control','id':'apellidos', 'placeholder': 'Ingrese los apelidos del cliente'}),
-            'nombre' : forms.TextInput(attrs={'class':'form-control','id':'nombre', 'placeholder': 'Ingrese la direccion del cliente'}),
+            'cedula' : forms.TextInput(attrs={'class':'form-control','id':'cedula', 'placeholder': 'Ingrese la cedula del cliente'}),
+            'apellidos' : forms.TextInput(attrs={'class':'form-control','id':'apellidos', 'placeholder': 'Ingrese los apellidos del cliente'}),
+            'nombre' : forms.TextInput(attrs={'class':'form-control','id':'nombre', 'placeholder': 'Ingrese el nombre del cliente'}),
             'vip' : forms.CheckboxInput(attrs={'class':'form-control','id':'vip', 'placeholder': 'El usuario es VIP?'}),
         }
