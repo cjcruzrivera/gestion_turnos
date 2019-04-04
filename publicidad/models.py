@@ -14,6 +14,6 @@ class Publicidad(models.Model):
         except Publicidad.DoesNotExist:
             return None
 
-def __str__(self):
-    return self.nombre
-    
+    def __str__(self):
+        return self.nombre
+        

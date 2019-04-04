@@ -20,10 +20,12 @@
             </div>
             <br>            
             <div class="content">
+                {% if object_list %}
                 <div>  
                     <img src="{{publicidad.imagen.url | default_if_none:'#'}}" width="900" height="500"/>                   
                     <!-- <img id="img" src="{% static 'media/gestion_turnos/images/Publicidad1.jpg' %}"/> -->                                     
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>        
