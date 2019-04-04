@@ -13,7 +13,7 @@
                         <th>Codigo publicidad</th>
                         <th>Nombre publicidad</th>
                         <th>Descripcion publicidad</th>
-                        <th>Imagen</th>                        
+                        <!-- <th>Imagen</th> -->                        
                     </tr>
                     {% for publicidad in publicidad_list %}
                     <tr>  
@@ -24,9 +24,11 @@
                         <td>{{publicidad.codigo}}</td>
                         <td>{{publicidad.nombre}}</td>
                         <td>{{publicidad.descripcion}}</td>
-                        <td> <!-- class="py-1" -->  <!-- {% static 'static/media/gestion_turnos/images/{{publicidad.nombre}}' %}} -->                                                          
-                            <img src="static/media/gestion_turnos/images/{{publicidad.nombre}}" alt="{{publicidad.codigo}}">
-                        </td>
+
+                        <!-- <td>  class="py-1" -->  <!-- {% static 'static/media/gestion_turnos/images/{{publicidad.nombre}}' %}}                                                           
+                            <img src="{% static 'media/gestion_turnos/images/{{publicidad.nombre}}.jpg'%}" > 
+                            <img src="{% static 'media/gestion_turnos/images/Publicidad1.jpg'%}" >                            
+                        </td>  -->
                     </tr> 
                     {% endfor %}                 
                 </table>
