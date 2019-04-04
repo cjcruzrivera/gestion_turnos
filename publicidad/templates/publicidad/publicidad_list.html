@@ -24,8 +24,8 @@
                         <td>{{publicidad.codigo}}</td>
                         <td>{{publicidad.nombre}}</td>
                         <td>{{publicidad.descripcion}}</td>
-                        <td class="py-1">                                                           
-                            <img src="{% static '{{publicidad.imagen}}' %}" alt="{{publicidad.codigo}}">
+                        <td> <!-- class="py-1" -->  <!-- {% static 'static/media/gestion_turnos/images/{{publicidad.nombre}}' %}} -->                                                          
+                            <img src="static/media/gestion_turnos/images/{{publicidad.nombre}}" alt="{{publicidad.codigo}}">
                         </td>
                     </tr> 
                     {% endfor %}                 
