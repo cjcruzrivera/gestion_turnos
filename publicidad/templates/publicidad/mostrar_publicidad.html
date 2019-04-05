@@ -1,5 +1,5 @@
 {% extends 'core/base.html' %}
-{% load static %}
+{% load staticfiles %}
 
 {% block content %}
 <!--
@@ -65,7 +65,7 @@
     <div class="item">  
         <!-- no encuentra esta carpeta, por eso no muestra la imagen
             en esta carpeta se guardan las imgs de publicidad -->
-        <img class="img-fluid" src="{% static 'media/publicidad/paris.jpg' %}" alt="2"/>                                       
+        <img class="img-fluid" src="../../../static/media/publicidad/paris.jpg" alt="2"/>                                       
     </div>       
 </div>
 {% endblock %}
