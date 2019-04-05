@@ -5,6 +5,9 @@ class Publicidad(models.Model):
     nombre = models.CharField(max_length = 100)
     descripcion = models.CharField(max_length = 300)
     imagen = models.ImageField(upload_to = 'images/publicidad/')
+
+    def __str__(self):
+        return self.nombre
 '''
     @staticmethod
     def get_publicidad():
@@ -14,6 +17,5 @@ class Publicidad(models.Model):
         except Publicidad.DoesNotExist:
             return None
 '''
-def __str__(self):
-    return self.nombre
+
         

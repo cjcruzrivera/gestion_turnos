@@ -1,8 +1,8 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    {% load static %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,9 +20,9 @@
     <!-- endinject -->
     <link rel="shortcut icon" href="{% static 'core/images/favicon.png'%}" />
     <!-- owl carousel -->
-    <link rel="stylesheet" href="{% static 'core/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css' %}"
+    <link rel="stylesheet" href="{% static '/core/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css' %}"
         type="text/css">
-    <link rel="stylesheet" href="{% static 'core/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css' %}"
+    <link rel="stylesheet" href="{% static '/core/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css' %}"
         type="text/css">
 </head>
 
@@ -269,6 +269,34 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="{% static 'core/js/dashboard.js'%}"></script>    
+
+    <!-- owl carousel -->
+    <script src="{% static '/core/OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js' %}" 
+    type="text/javascript"></script>
+    <script src="{% static '/core/OwlCarousel2-2.3.4/dist/owl.carousel.js' %}"></script>
+
+    <script type="text/javascript">
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1,
+                nav:true
+            },
+            600:{
+                items:3,
+                nav:false
+            },
+            1000:{
+                items:5,
+                nav:true,
+                loop:false
+            }
+        }
+    })
+    </script>
 
     {% block extrajs %}
 
