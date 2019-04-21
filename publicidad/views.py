@@ -27,7 +27,11 @@ class PublicidadListView(ListView):
         return context
 
 def mostrar_publicidad(request):
-    return render(request, 'publicidad/mostrar_publicidad.html', {})
+    queryset = Publicidad.objects.all()
+    context = {
+        "publicidad": queryset,
+    }
+    return render(request, 'publicidad/mostrar_publicidad.html', context)
 
 class PublicidadUpdateView(UpdateView):
     model = Publicidad
