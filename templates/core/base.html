@@ -22,9 +22,7 @@
     
     {% block extracss %}
         
-    {% endblock extracss %}
-        
-
+    {% endblock extracss %}        
 </head>
 
 <body>
@@ -86,18 +84,6 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="{% static 'core/js/dashboard.js'%}"></script>
-
-    <!-- slick slideshow -->
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
-    <script type="text/javascript">
-        $('.multiple-items').slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3
-        });
-    </script>
 
     {% block extrajs %}
 

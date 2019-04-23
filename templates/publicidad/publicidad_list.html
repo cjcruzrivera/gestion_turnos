@@ -1,4 +1,4 @@
-{% extends 'core/base.html' %}
+{% extends '../core/base.html' %}
 {% load staticfiles %}
 
 {% block content %}
@@ -15,7 +15,7 @@
                         <th>Codigo publicidad</th>
                         <th>Nombre publicidad</th>
                         <th>Descripcion publicidad</th>
-                        <!-- <th>Imagen</th> -->
+                        <th>Imagen</th> 
                     </tr>
                     {% for publicidad in publicidad_list %}
                     <tr>
@@ -29,11 +29,8 @@
                         </td>
                         <td>{{publicidad.codigo}}</td>
                         <td>{{publicidad.nombre}}</td>
-                        <td>{{publicidad.descripcion}}</td>
-
-                        <h3>{{publicidad.nombre}}, {{publicidad.imagen}}</h3>                            
-
-                        <td>  <!-- error: no se ha podido cargar la imagen -->                                                          
+                        <td>{{publicidad.descripcion}}</td>                    
+                        <td>  
                             <img src="/../../../static/media/{{publicidad.imagen}}" 
                                 title="{{publicidad.nombre}}"/>                             
                         </td>  
