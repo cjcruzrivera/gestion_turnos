@@ -4,7 +4,18 @@ class Publicidad(models.Model):
     codigo = models.CharField(max_length = 15, primary_key = True)
     nombre = models.CharField(max_length = 100)
     descripcion = models.CharField(max_length = 300)
-    imagen = models.ImageField(upload_to = 'gestion_turnos/images')
+    imagen = models.ImageField(null=False, upload_to = 'images/')
 
-def __str__(self):
-    return self.nombre
+    def __str__(self):
+        return self.nombre
+'''
+    @staticmethod
+    def get_publicidad():
+        try:
+            publicidad = Publicidad.objects.all()
+            return publicidad
+        except Publicidad.DoesNotExist:
+            return None
+'''
+
+        
