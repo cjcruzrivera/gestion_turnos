@@ -1,5 +1,6 @@
 from django.db import models
 from sucursales.models import Sucursal
+from clientes.models import Cliente
 
 import factory
 import factory.django
@@ -7,7 +8,7 @@ import factory.django
 class FabricaSucursalPrincipal(factory.django.DjangoModelFactory):
 	class Meta:
 		model = Sucursal
-	codigo = factory.Faker('iban')
+	codigo = factory.Faker('pyint')
 	nombre = factory.Faker('name')
 	direccion = factory.Faker('address')
 	localidad = factory.Faker('city')
@@ -18,7 +19,7 @@ class FabricaSucursalPrincipal(factory.django.DjangoModelFactory):
 class FabricaSucursalGeneral(factory.django.DjangoModelFactory):
 	class Meta:
 		model = Sucursal
-	codigo = factory.Faker('iban')
+	codigo = factory.Faker('pyint')
 	nombre = factory.Faker('name')
 	direccion = factory.Faker('address')
 	localidad = factory.Faker('city')
@@ -26,5 +27,12 @@ class FabricaSucursalGeneral(factory.django.DjangoModelFactory):
 	tipo = 'G'
 	actual = True
 
+class FabricaClientes(factory.django.DjangoModelFactory):
+	class Meta:
+		model = Cliente
+	cedula = factory.Faker('pyint')
+	nombre = factory.Faker('first_name')
+	apellidos = factory.Faker('last_name')
+	vip = factory.Faker('pybool')
 
 # Create your models here.
