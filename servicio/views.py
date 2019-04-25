@@ -3,13 +3,13 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
-from .models import Cliente
-from .forms import ClienteForm
+from .models import Servicio
+from .forms import ServicioForm
 
-class ClienteCreateView(CreateView):
-    model = Cliente
-    form_class = ClienteForm
-    success_url = reverse_lazy('list_cliente')
+class ServicioCreateView(CreateView):
+    model = Servicio
+    form_class = ServicioForm
+    success_url = reverse_lazy('list_servicio')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -17,8 +17,8 @@ class ClienteCreateView(CreateView):
         context['usuario'] = usuario
         return context
 
-class ClienteListView(ListView):
-    model = Cliente
+class ServicioListView(ListView):
+    model = Servicio
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -26,11 +26,11 @@ class ClienteListView(ListView):
         context['usuario'] = usuario
         return context
 
-class ClienteUpdateView(UpdateView):
-    model = Cliente
-    form_class = ClienteForm
+class ServicioUpdateView(UpdateView):
+    model = Servicio
+    form_class = ServicioForm
     template_name_suffix = '_update_form'
-    success_url = reverse_lazy('list_cliente')
+    success_url = reverse_lazy('list_servicio')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -38,6 +38,6 @@ class ClienteUpdateView(UpdateView):
         context['usuario'] = usuario
         return context
 
-class ClienteDeleteView(DeleteView):
-    model = Cliente
-    success_url = reverse_lazy('list_cliente')
+class ServicioDeleteView(DeleteView):
+    model = Servicio
+    success_url = reverse_lazy('list_servicio')
