@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'publicidad',
     'clientes',
     'fabrica',
+    'servicio',
+    'turno',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +62,7 @@ ROOT_URLCONF = 'gestion_turnos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,6 +87,17 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'Turnos',
+# 	'USER': 'daniel',
+# 	'PASSWORD': '123456',
+# 	'HOST': 'localhost',
+# 	'PORT': 5432,
+#     }
+# }
 
 AUTH_USER_MODEL = 'usuarios.Usuario'
 

@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %} 
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">            
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <h3>Cajero General</h3> 
+                        </div>                 
+                
+                        <form class="forms-sample">
+                            <p>Cliente:</p>
+
+                            <div class="form-group row">
+                                <div class="form-group col-md-6">                      
+                                    <input type="text" class="form-control" id="inputNombre" value="{{cliente.nombre}}" disabled>
+                                </div>
+                                <div class="form-group col-md-6">                      
+                                    <input type="text" class="form-control" id="inputApellidos" value="{{cliente.apellidos}}" disabled>
+                                </div>
+                                <div class="form-group col-md-6">                                            
+                                    <input type="text" class="form-control" id="inputId" value="{{cliente.cedula}}" disabled>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    {% if cliente.vip == True %}
+                                    <div class="form-radio form-radio-flat disabled">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="Vip" 
+                                                id="Vip" value="vip" disabled checked> VIP
+                                        </label>
+                                    </div>
+                                    {% else %}
+                                    <div class="form-radio form-radio-flat disabled">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="NoVip" 
+                                                id="NoVip" value="novip" disabled checked> No VIP
+                                        </label>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputTurno">Turno actual</label>
+                                    <input type="text" class="form-control" id="inputTurno" disabled value="{{turno}}">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEstado">Estado del turno</label>
+                                    <input type="text" class="form-control" id="inputEstado" disabled value="{{turno.estado}}">
+                                </div>                            
+                            </div>                            
+
+                            <div class="form-group" align="center">                                        
+                                <button type="reset" class="btn btn-rounded btn-danger">Cancelar turno</button>
+                                <button type="submit" class="btn btn-rounded btn-success">Finalizar turno</button>
+                                <button type="submit" class="btn btn-rounded btn-info">Siguiente turno</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
