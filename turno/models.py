@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 
 from django.db import models
-#from cliente.models import Cliente
+from clientes.models import Cliente
 from sucursales.models import Sucursal
-from django.utils.translation import ugettext_lazy as _
+from servicio.models import Servicio
+from usuarios.models import Usuario
 # Create your models here.
 
 class Ciudad (models.Model): 
@@ -17,27 +20,19 @@ class Ciudad (models.Model):
     
 class Turno (models.Model): 
 
-    REGISTRO = 'REG'
-    GENERAL= 'GEN'
-    IMPO_EXPO= 'IMPO'
-    SEGUROS= 'SEG' 
-    DOLARES= 'DOL'
-    #VIP = 'VIP'
-
-    OPCIONES_TIPO_TURNO = (
-        (REGISTRO, 'Registro'),
-        (GENERAL, 'General'),
-        (IMPO_EXPO, 'Importaciones y Exportaciones'),
-        (SEGUROS, 'Seguros'),
-        (DOLARES, 'Dólares')
-       # (VIP, 'Clientes VIP') 
-    )
-
-    turno = models.AutoField (max_length = 20 , primary_key= True,  ) 
-    tipo_turno= models.IntegerField(null= True, choices= OPCIONES_TIPO_TURNO)
-
-    isAtendido = models.BooleanField (default= False)
+    turno = models.CharField(max_length=20, unique=True) 
+    hora_solicitud = models.DateTimeField(editable=False)
+    hora_inicio_turno = models.DateTimeField()
+    hora_fin_turno = models.DateTimeField()
+    isAtendido = models.BooleanField(default=False)
     
-    
-    #cliente = models.ForeignKey(Cliente, on_delete= models.CASCADE, null=True)
-    sucursal = models.ForeignKey(Sucursal, on_delete= models.CASCADE, null =True ) 
+    servicio = models.ForeignKey(Servicio, on_delete= models.CASCADE, null=True)
+    cliente = models.ForeignKey(Cliente, on_delete= models.CASCADE, null=True)
+    sucursal = models.ForeignKey(Sucursal, on_delete= models.CASCADE, null =True )
+    cajero = models.ForeignKey(Usuario, on_delete= models.CASCADE, null =True) 
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.created = timezone.now()
+        
+        return super(Turno, self).save(*args, **kwargs)

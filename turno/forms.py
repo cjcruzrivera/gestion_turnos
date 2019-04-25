@@ -22,32 +22,3 @@ class ServiceForm(forms.Form):
                                     initial='', widget=forms.Select(), required=True)
 
 
-
-class TurnoForm(forms.ModelForm):
-
-    class Meta:
-        model = Turno
-        fields = [
-            'turno',
-            'tipo_turno',
-            'isAtendido',
-          #  'cliente',
-            'sucursal',
-            
-        ]
-        labels={
-            'turno' : 'Turno',
-            'tipo_turno' : 'Tipo de Turno',
-            'isAtendido' : 'Atendido',
-          #  'cliente' : 'ID Cliente',
-            'sucursal' : 'Sucursal',
-        }
-
-        widgets = {
-            'turno'  : forms.TextInput(attrs={'class':'form-control'}),
-            'tipo_turno': forms.Select(attrs={'class':'form-control'}),
-            'isAtendido' : forms.TextInput(attrs={'class':'form-control'}),
-        #    'cliente' :  forms.SelectDateWidget(
-        #        years = range(1990, 2018),   attrs={'class':'datepicker'}),
-            'sucursal' : forms.Select(attrs={'class':'form-control'}),
-        }

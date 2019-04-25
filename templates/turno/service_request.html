@@ -1,30 +1,91 @@
-{%extends 'base_template.html'%}
-{%block content%}
-<h2>¿Qué servicio desea?</h2>
-    {{text}}
-   <form action="post">
-        {%csrf_token%}
-        
-        <table align = "center">
-            <tr>
-                <td><input type="button"  value="Registrarse" onclick="display.value= this.value" 
-                    style="background-color: #74ce7a;border-radius: 8px;border: none;padding: 14px 40px;"></button></td>
-                <td><input type="button"  value="Transacción en Dólares" onclick="display.value= this.value" 
-                    style="background-color: #74ce7a;border-radius: 8px;border: none;padding: 14px 40px;"   ></button></td>
-                <td><input type="button" value="Importaciones y Exportaciones" onclick="display.value= this.value" 
-                    style="background-color: #74ce7a;border-radius: 8px;border: none;padding: 14px 40px;"></button></td>
-            </tr>
-            <tr>
-                <td><input type="button" value="General onclick="display.value= this.value" 
-                    style="background-color: #74ce7a;border-radius: 8px;border: none;padding: 14px 40px;"></button></td>
-                <td><input type="button" value="Seguros"onclick="display.value= this.value" 
-                    style="background-color: #74ce7a;border-radius: 8px;border: none;padding: 14px 40px;"></button></td>
-                <td><input type="button" value="Salir"onclick="display.value= this.value" 
-                    style="background-color: #74ce7a;border-radius: 8px;border: none;padding: 14px 40px;"></button></td>
-                
-        </table>
-        <input type="text" id= "display">
-   </form>
+{% extends 'core/base.html' %}
+
+
+{% block extracss %}
+<style>
+    .main-panel {
+        width: 100% !important;
+    }
+
+    .btn{
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
     
+    .page-body-wrapper:not(.auth-page){
+        padding-top: 0;
+    }
+</style>
+{% endblock extracss %}
+
+
+<!-- EMPTY BLOCKS TO DELETE BASE CONTENT -->
+{% block sidebar %}
+{% endblock sidebar %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+{% block footer %}
+{% endblock footer %}
+
+
+
+{%block content%}
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="card-body" align="center">
+            <center>
+                <h1>BANCO XYZ</h1>
+            </center>
+            <br>
+            <p class="card-description">Seleccione su servicio</p>
+            <p class="card-description">Cliente identificado con cedula: {{identificacion}}</p>
+            <div class="template-demo">
+                <form id="myForm" method="post">
+                    {%csrf_token%}
+                    <input hidden type="text" id="identificacion" name="identificacion" value="{{identificacion}}">
+                    <input hidden type="text" id="servicio" name="servicio">
+                    <button id="1" type="button" class="btn btn-primary btn-rounded btn-lg">
+                        <h4>Consignaciones, Retiros <br> y Pagos de servicios</h4>
+                    </button>
+                    <button id="2" type="button" class="btn btn-primary btn-rounded btn-lg">
+                        <h4>Importaciones y <br> exportaciones</h4>
+                    </button>
+                    <button id="3" type="button" class="btn btn-primary btn-rounded btn-lg">
+                        <h4>Transacciones <br> en dólares</h4>
+                    </button>
+                    <button id="4" type="button" class="btn btn-primary btn-rounded btn-lg">
+                        <h4>Seguros</h4>
+                    </button>
+                    <button id="5" type="button" class="btn btn-primary btn-rounded btn-lg">
+                        <h4>Clientes VIP</h4>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--- row-->
+
+
 {%endblock%}
 
+
+{% block extrajs %}
+<script>
+
+$('.btn').click(function () {
+    var id_serv = $(this).attr('id');
+    console.log(id_serv);
+    $("input[name='servicio']").attr('value', id_serv);
+
+    //TODO: Poner captcha aqui(?)
+    $('#myForm').submit();
+})
+
+</script>
+{% endblock extrajs %}
