@@ -9,20 +9,24 @@ from turno.models import Turno
 from turno.forms import IdForm, ServiceForm
 from clientes.models import Cliente
 from servicio.models import Servicio
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 # Create your views here.
+
+
+
 
 
 class IDView(TemplateView):
     template_name = 'turno/id_request.html'
     form_class = IdForm
+    success_url = '/'
 
     def get (self, request): 
         form = self.form_class
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
-        form = self.form_class(request.POST)
+        form = IdForm(request.POST)
 
         if form.is_valid():
             identificacion = form.cleaned_data['identificacion']
