@@ -2,6 +2,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.http import JsonResponse
 
 from .models import Cliente
 from .forms import ClienteForm
@@ -41,3 +42,21 @@ class ClienteUpdateView(UpdateView):
 class ClienteDeleteView(DeleteView):
     model = Cliente
     success_url = reverse_lazy('list_cliente')
+
+def act_cliente(request):
+    cedula = request.GET.get('cedula', None)
+    nombre = request.GET.get('nombre', None)
+    apellidos = request.GET.get('apellidos', None)
+    vip = request.GET.get('vip', None)
+    cliente = Cliente.objects.get(cedula=cedula)
+    cliente.nombre = nombre
+    cliente.apellidos = apellidos
+    if vip:
+        cliente.vip = True
+    else:
+        cliente.vip = False
+    cliente.save()
+    data = {
+        'update': True
+    }
+    return JsonResponse(data)
