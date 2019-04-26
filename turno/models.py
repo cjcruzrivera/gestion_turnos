@@ -20,7 +20,7 @@ class Ciudad (models.Model):
     
 class Turno (models.Model): 
 
-    turno = models.CharField(max_length=20, unique=True) 
+    turno = models.CharField(max_length=20) 
     hora_solicitud = models.DateTimeField(editable=False)
     hora_inicio_turno = models.DateTimeField(null=True)
     hora_fin_turno = models.DateTimeField(null=True)
@@ -34,5 +34,4 @@ class Turno (models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.hora_solicitud = timezone.now()
-        
         return super(Turno, self).save(*args, **kwargs)

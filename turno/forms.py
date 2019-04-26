@@ -6,7 +6,6 @@ from turno.models import Turno
 class IdForm (forms.Form): 
     identificacion = forms.CharField(widget=forms.TextInput(attrs={'readonly':'readonly'}))
 
-
 class ServiceForm(forms.Form): 
 
     SERVICE_CHOICES = (

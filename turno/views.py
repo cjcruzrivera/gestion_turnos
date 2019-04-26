@@ -30,11 +30,11 @@ class IDView(TemplateView):
 
         if form.is_valid():
             identificacion = form.cleaned_data['identificacion']
-            cliente = Cliente.objects.filter(cedula=identificacion).exists()
-            if not cliente:
+            cliente = Cliente.objects.filter(cedula=identificacion)
+            if not cliente.exists():
                 Cliente.objects.create(cedula=identificacion)
 
-            if cliente and cliente.VIP:
+            if cliente.exists() and cliente.get().vip:
                 # El cliente existe por tanto el servicio es VIP
                 # Crear el turno y redireccionar a show_turno
                 pass
@@ -56,19 +56,15 @@ def ServicioView(request, identificacion):
         return render(request, "turno/service_request.html", {'identificacion': identificacion, 'servicios': servicios})
     else:
         servicio_id = request.POST.get('servicio')
-        servicio = Servicio.objects.get(codigo=servicio_id)
         cliente = Cliente.objects.get(cedula=identificacion)
-        turno = Turno.objects.create(cliente=cliente, servicio=servicio)
-        return HttpResponse(turno.turno)
+        turno = Turno.objects.create(cliente_id=cliente.id, servicio_id=servicio_id, sucursal_id=request.user.sucursal.codigo, cajero_id=request.user.id)
+        turno.turno = turno.servicio.tipo.nombre + str(turno.id)
+        turno.save()
+        return HttpResponseRedirect(reverse('turno', kwargs={'identificacion': turno.id}))
         # Llenar el turno y redireccionar a la vista de visualizacion de un turno
 
-class TurnoView(CreateView): 
-    template_name = 'service_request.html'
 
-    def get (self, request): 
-        form =  ServiceForm 
-        return redirect ('/' )
-
-
-   
-    #success_url = '/success.html' 
+def TurnoView(request, identificacion):
+    turno = Turno.objects.get(pk=identificacion)
+    return render(request, "turno/turno_view.html", {'identificacion': identificacion, 'turno': turno})
+    
