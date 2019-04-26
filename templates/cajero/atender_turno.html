@@ -30,6 +30,14 @@
                             {% else %}
                             <p>Cliente {{turno.cliente.nombre}} {{turno.cliente.apellidos}}:</p>
                             <p>Cedula: {{turno.cliente.cedula}}</p>
+                            <input type="text" name="cedula" id="cedula" hidden required="" class="form-control" placeholder="Ingrese la cedula del cliente"
+                                    maxlength="20" value="{{turno.cliente.cedula}}">
+                             <input hidden type="text" name="nombre" id="nombre"
+                                    required="" class="form-control" value="{{turno.cliente.nombre}}" placeholder="Ingrese el nombre del cliente"
+                                    maxlength="50">
+                            <input hidden type="text" name="apellidos"
+                                    id="apellidos" required="" class="form-control"
+                                    placeholder="Ingrese los apellidos del cliente" maxlength="50" value="{{turno.cliente.apellidos}}">
                             <div class="form-control">
                                 VIP
                                 {% if turno.cliente.vip %}
