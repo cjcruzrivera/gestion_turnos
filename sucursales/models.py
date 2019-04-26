@@ -5,11 +5,11 @@ from .validators import validateNumber, TYPE_CHOICES
 
 class Sucursal(models.Model):
     """ Clase modelo Sucursal """
-    codigo = models.CharField(max_length=15, primary_key=True)
+    codigo = models.CharField(max_length=30, primary_key=True)
     nombre = models.CharField(max_length=200)
     direccion = models.CharField(max_length=200)
     localidad = models.CharField(max_length=200)
-    telefono = models.CharField(max_length=10, validators=[validateNumber])
+    telefono = models.CharField(max_length=20, validators=[validateNumber])
     tipo = models.CharField(max_length=1, choices=TYPE_CHOICES)    
     actual = models.BooleanField(default=False)
 

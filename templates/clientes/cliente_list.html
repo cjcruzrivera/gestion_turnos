@@ -12,7 +12,7 @@
                 <table class="table table-striped table-responsive">
                     <tr>
                         <th></th>
-                        <th>Codigo Cliente</th>
+                        <th>Cedula Cliente</th>
                         <th>Nombre Cliente</th>
                         <th>Apellidos Cliente</th>
                         <th>VIP</th>
@@ -22,13 +22,13 @@
                     <tr>
                         <td>
                             <a style="padding: 5px 0px 5px 5px" class="btn btn-sm btn-info"
-                                href="{% url 'update_cliente' cliente.codigo %}"> <i
+                                href="{% url 'update_cliente' cliente.id %}"> <i
                                     class="icon-sm mdi mdi-pencil"></i></a>
                             <a style="padding: 5px 0px 5px 5px" class="btn btn-sm btn-danger"
-                                href="{% url 'delete_cliente' cliente.codigo %}"> <i
+                                href="{% url 'delete_cliente' cliente.id %}"> <i
                                     class="icon-sm mdi mdi-delete"></i></a>
                         </td>
-                        <td>{{cliente.codigo}}</td>
+                        <td>{{cliente.cedula}}</td>
                         <td>{{cliente.nombre}}</td>
                         <td>{{cliente.apellidos}}</td>
                         <td>

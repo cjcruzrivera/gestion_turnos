@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from core.views import index
 
 urlpatterns = [
     path('', include('login.urls')),
@@ -27,5 +28,6 @@ urlpatterns = [
     path('clientes/', include('clientes.urls')),
     path('servicios/', include('servicio.urls')),
     path('admin/', admin.site.urls),
+    path('cajero/', include('cajero.urls')),
     path ('', include('turno.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

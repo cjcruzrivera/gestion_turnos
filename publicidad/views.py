@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 from .models import Publicidad
 from .forms import PublicidadForm
 
+from turno.models import Turno
+
 class PublicidadCreateView(CreateView):
     model = Publicidad
     form_class = PublicidadForm
@@ -31,15 +33,13 @@ class PublicidadTurno(ListView):
     form_class = PublicidadForm
     template_name_suffix = '_mostrar'
     success_url = reverse_lazy('turno_publicidad')
-    '''
-    def mostrar_publicidad(request):
-        publicidad = Publicidad.objects.all()  
-        return render(request, 'publicidad/mostrar_publicidad.html', {"publicidad": publicidad})
-    '''
+
     def get_context_data(self, **kwargs):        
         context = super().get_context_data(**kwargs)
         usuario = self.request.user
+        turnos = Turno.objects.filter(isAtendido=False, hora_fin_turno__isnull=True, cajero__isnull=False)
         context['usuario'] = usuario
+        context['turnos'] = turnos
         return context  
 
 class PublicidadUpdateView(UpdateView):

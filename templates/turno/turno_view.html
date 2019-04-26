@@ -1,0 +1,52 @@
+{% extends 'core/base.html' %}
+
+{% block extracss %}
+<style>
+    .main-panel {
+        width: 100% !important;
+    }
+
+    .page-body-wrapper:not(.auth-page) {
+        padding-top: 0px;
+        height: -webkit-fill-available;
+    }
+
+    .col-md9 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+{% endblock extracss %}
+
+
+<!-- EMPTY BLOCKS TO DELETE BASE CONTENT -->
+{% block sidebar %}
+{% endblock sidebar %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+{% block footer %}
+{% endblock footer %}
+
+
+{% block content %}
+<div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+    <div class="row w-100">
+        <div class="col-lg-4 mx-auto">
+            <div class="auto-form-wrapper">
+                <h3 align="center">BANCO XYZ</h3>
+                <br>
+                SE LE HA ASIGNADO EL TURNO:
+                <h2>{{turno.turno}}</h2>
+
+                <a href="{% url 'id_request' %}" class="btn btn-secondary btn-rounded">
+                    IMPRIMIR
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
