@@ -66,5 +66,5 @@ def ServicioView(request, identificacion):
 
 def TurnoView(request, identificacion):
     turno = Turno.objects.get(pk=identificacion)
-    return render(request, "turno/turno_view    .html", {'identificacion': identificacion, 'turno': turno})
+    return render(request, "turno/turno_view.html", {'identificacion': identificacion, 'turno': turno})
     
