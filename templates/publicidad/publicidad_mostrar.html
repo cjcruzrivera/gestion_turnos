@@ -8,6 +8,9 @@
     .page-body-wrapper{
         padding-top: 0px !important;
     }
+    .main-panel{
+        width: 100%;
+    }
 </style>
 <!-- owl carousel -->
 <link rel="stylesheet" href="{% static '/core/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css' %}"
@@ -27,7 +30,7 @@
 
 {% block content %}
 <div class="row">
-    <div class="card-body col-md-6 grid-margin stretch-card" align="center">
+    <div class="card-body col-md-5 grid-margin stretch-card" align="center">
         <div class="card">
             <table class="table table-striped table-responsive-md" style="width:100%">
                 <tr>
@@ -42,7 +45,7 @@
         </div>
     </div>
 
-    <div class="card-body col-md-6 grid-margin stretch-card">
+    <div class="card-body col-md-7 grid-margin stretch-card">
         <div class="card">
             {% if object_list %}
             <div class="owl-carousel owl-theme">   
