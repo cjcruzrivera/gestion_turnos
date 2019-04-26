@@ -45,7 +45,7 @@
 
                     <tr>
                         <td>{{turno.turno}}</td>
-                        <td>{{turno.cajero.tipo.get_nombre_display}} - {{turno.cajero.tipo.id}}</td>
+                        <td>{{turno.cajero.rol.get_nombre_display}} - {{turno.cajero.rol.id}}</td>
                     </tr>
                     {% endfor %}
 
@@ -55,7 +55,7 @@
 
 
         {% else %}
-        <h3>NO HAY TURNOS PENDIENTES</h3>
+        <h3>NO HAY TURNOS EN ATENCIÓN</h3>
         {% endif %}
 
     </div>

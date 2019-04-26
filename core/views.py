@@ -7,4 +7,4 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     """ Index """
     usuario = request.user
-    return render(request, 'core/index.html', {'usuario': usuario})
+    return render(request, 'core/index.html', {'usuario': usuario, 'exists': True})

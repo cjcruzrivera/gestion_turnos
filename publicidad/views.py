@@ -37,7 +37,7 @@ class PublicidadTurno(ListView):
     def get_context_data(self, **kwargs):        
         context = super().get_context_data(**kwargs)
         usuario = self.request.user
-        turnos = Turno.objects.filter(isAtendido=False, hora_fin_turno__isnull=True, cajero__isnull=True)
+        turnos = Turno.objects.filter(isAtendido=False, hora_fin_turno__isnull=True, cajero__isnull=False)
         context['usuario'] = usuario
         context['turnos'] = turnos
         return context  
