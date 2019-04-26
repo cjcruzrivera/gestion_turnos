@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'fabrica',
     'servicio',
     'turno',
+    'cajero',
 ]
 
 MIDDLEWARE = [

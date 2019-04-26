@@ -28,5 +28,6 @@ urlpatterns = [
     path('clientes/', include('clientes.urls')),
     path('servicios/', include('servicio.urls')),
     path('admin/', admin.site.urls),
-    path('', include('turno.urls')),
+    path('cajero/', include('cajero.urls')),
+    path ('', include('turno.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
