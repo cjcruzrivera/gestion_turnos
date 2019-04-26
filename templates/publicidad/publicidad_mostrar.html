@@ -1,13 +1,29 @@
 {% extends 'core/base.html' %}
 {% load staticfiles %}
 
+
+
 {% block extracss %}
+<style>
+    .page-body-wrapper{
+        padding-top: 0px !important;
+    }
+</style>
 <!-- owl carousel -->
 <link rel="stylesheet" href="{% static '/core/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css' %}"
     type="text/css">
 <link rel="stylesheet" href="{% static '/core/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css' %}"
     type="text/css">        
 {% endblock extracss %}
+
+
+{% block navbar %}
+{% endblock navbar %}
+    
+
+{% block sidebar %}
+{% endblock sidebar %}
+    
 
 {% block content %}
 <div class="row">
@@ -54,26 +70,16 @@ type="text/javascript"></script>
 
 <script type="text/javascript">
 $('.owl-carousel').owlCarousel({
+    items: 1,
     dots:false,
     nav:false,
+    rewind:true,
+    margin:10,
     autoplay:true,
     autoplayTimeout:5000,
     autoplayHoverPause:true,
-    autoHeight:false,
-    loop:true,
-    margin:10,
     responsiveClass:true,
-    responsive:{
-        0:{
-            items:1,                            
-        },
-        600:{
-            items:1,                        
-        },
-        1000:{
-            items:1,                            
-        }
-    }
+
 })
 </script>
 {% endblock extrajs %}
