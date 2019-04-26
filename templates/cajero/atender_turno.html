@@ -9,25 +9,59 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
-                            <h3>Cajero {{usuario.tipo}}</h3>
+                            <h3>{{usuario.rol}}</h3>
                         </div>
 
                         <form class="forms-sample" method="post">
-                            {% if not cliente.nombre %}
-                            NO REGISTRADO
+                            {% if not turno.cliente.nombre %}
+                            <p id="not_r">CLIENTE NO REGISTRADO</p>
                             {% csrf_token %}
-                            {{ form.as_p }}
+                            <p><label for="cedula">Cedula:</label> <input type="text" name="cedula" id="cedula"
+                                    required="" class="form-control" placeholder="Ingrese la cedula del cliente"
+                                    maxlength="20" value="{{turno.cliente.cedula}}"></p>
+                            <p><label for="nombre">Nombre:</label> <input type="text" name="nombre" id="nombre"
+                                    required="" class="form-control" placeholder="Ingrese el nombre del cliente"
+                                    maxlength="50"></p>
+                            <p><label for="apellidos">Apellidos:</label> <input type="text" name="apellidos"
+                                    id="apellidos" required="" class="form-control"
+                                    placeholder="Ingrese los apellidos del cliente" maxlength="50"></p>
+                            <p><label for="vip">Vip:</label> <input type="checkbox" name="vip" id="vip"
+                                    class="form-control" placeholder="El usuario es VIP?"></p>
                             {% else %}
-                            <p>Cliente {{cliente.nombre}}:</p>
-                            {% endif %}
-                            <input class="btn btn-rounded btn-success" type="submit" value="Guardar">
+                            <p>Cliente {{turno.cliente.nombre}} {{turno.cliente.apellidos}}:</p>
+                            <p>Cedula: {{turno.cliente.cedula}}</p>
+                            <input type="text" name="cedula" id="cedula" hidden required="" class="form-control" placeholder="Ingrese la cedula del cliente"
+                                    maxlength="20" value="{{turno.cliente.cedula}}">
+                             <input hidden type="text" name="nombre" id="nombre"
+                                    required="" class="form-control" value="{{turno.cliente.nombre}}" placeholder="Ingrese el nombre del cliente"
+                                    maxlength="50">
+                            <input hidden type="text" name="apellidos"
+                                    id="apellidos" required="" class="form-control"
+                                    placeholder="Ingrese los apellidos del cliente" maxlength="50" value="{{turno.cliente.apellidos}}">
+                            <div class="form-control">
+                                VIP
+                                {% if turno.cliente.vip %}
+                                <input type="checkbox" checked name="vip" id="vip" class="form-control"
+                                    placeholder="El usuario es VIP?">
+                                {% else %}
+                                <input type="checkbox" name="vip" id="vip" class="form-control"
+                                    placeholder="El usuario es VIP?">
+                                {% endif %}
 
-                            <div class="form-group" align="center">
-                                <button type="reset" class="btn btn-rounded btn-danger">Cancelar turno</button>
-                                <button type="submit" class="btn btn-rounded btn-success">Finalizar turno</button>
-                                <button type="submit" class="btn btn-rounded btn-info">Siguiente turno</button>
                             </div>
+                            {% endif %}
+                            <input id="guardar" data-url="{% url 'act_cliente' %}" class="btn btn-rounded btn-success" value="Guardar">
+
+
                         </form>
+                    </div>
+                    <div class="form-group">
+                        <h4> TURNO: {{turno.turno}} </h4>
+                    </div>
+                    <div class="form-group" align="center">
+                        <button data-url="{% url 'actualiza_turno' %}" id="cancela" data-id="{{turno.id}}" class="btn btn-rounded btn-danger">Cancelar turno</button>
+                        <button data-url="{% url 'actualiza_turno' %}" id="finalizar" data-id="{{turno.id}}" class="btn btn-rounded btn-success">Finalizar turno</button>
+                        <button disabled data-url="{% url 'next_turno' %}" id="next" class="btn btn-rounded btn-primary">Siguiente turno</button>
                     </div>
                 </div>
             </div>
@@ -36,3 +70,77 @@
     </div>
 </div>
 {% endblock content %}
+
+
+{% block extrajs %}
+<script>
+    function send_data_turno(accion, url_ajax, id_turno) {
+
+        $.ajax({
+            url: url_ajax,
+            data: {
+                'accion': accion,
+                'id_turno': id_turno,
+
+            },
+            success: function (respuesta) {
+                
+            },
+            error: function () {
+                console.log("No se ha podido obtener la información");
+            }
+        });
+    }
+    
+    $("#finalizar").click(function () {
+        var url_ajax = $(this).attr('data-url');
+        var id_turno = $(this).attr('data-id');
+        send_data_turno('finalizar', url_ajax, id_turno);        
+    })
+
+    $("#cancelar").click(function () {
+        var url_ajax = $(this).attr('data-url');
+        var id_turno = $(this).attr('data-id');
+        send_data_turno('cancelar', url_ajax, id_turno);
+    })
+
+    $("#guardar").click(function () {
+        var cedula = $('input[name="cedula"]').val();        
+        var vip = $('input[name="vip"]').prop('checked');
+        var nombre = $('input[name="nombre"]').val();
+        if (nombre == "") {
+            swal("Error", "El nombre no puede ser vacio", "warning");
+            return;
+        }
+
+        var apellidos = $('input[name="apellidos"]').val();
+        if (apellidos == "") {
+            swal("Error", "Los apellidos no pueden ser vacio", "warning")
+            return;
+        }
+        data = {
+            "cedula": cedula,
+            "nombre": nombre,
+            "apellidos": apellidos,
+            "vip": vip,
+
+        }
+        var url_ajax = $(this).attr('data-url');
+
+        $.ajax({
+            url: url_ajax,
+            data: data,
+            success: function (respuesta) {
+                swal("Exito", "Cliente actualizado con exito", "success");
+                setTimeout(function () {
+                    location.reload();
+                },3000)
+            },
+            error: function () {
+                console.log("No se ha podido obtener la información");
+            }
+        });
+
+    })
+</script>
+{% endblock extrajs %}
