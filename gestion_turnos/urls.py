@@ -21,7 +21,6 @@ from core.views import index
 
 urlpatterns = [
     path('', include('login.urls')),
-    path('', index, name='index'),
     path('core/', include('core.urls', namespace="core")),
     path('sucursales/', include('sucursales.urls')),
     path('usuarios/', include('usuarios.urls')),
@@ -29,5 +28,6 @@ urlpatterns = [
     path('clientes/', include('clientes.urls')),
     path('servicios/', include('servicio.urls')),
     path('admin/', admin.site.urls),
+    path('cajero/', include('cajero.urls')),
     path ('', include('turno.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
