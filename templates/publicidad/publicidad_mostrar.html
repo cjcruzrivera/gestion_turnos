@@ -1,7 +1,17 @@
 {% extends 'core/base.html' %}
 {% load staticfiles %}
 
+
+
 {% block extracss %}
+<style>
+    .page-body-wrapper{
+        padding-top: 0px !important;
+    }
+    .main-panel{
+        width: 100%;
+    }
+</style>
 <!-- owl carousel -->
 <link rel="stylesheet" href="{% static '/core/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css' %}"
     type="text/css">
@@ -9,9 +19,18 @@
     type="text/css">        
 {% endblock extracss %}
 
+
+{% block navbar %}
+{% endblock navbar %}
+    
+
+{% block sidebar %}
+{% endblock sidebar %}
+    
+
 {% block content %}
 <div class="row">
-    <div class="card-body col-md-6 grid-margin stretch-card" align="center">
+    <div class="card-body col-md-5 grid-margin stretch-card" align="center">
         <div class="card">
             <table class="table table-striped table-responsive-md" style="width:100%">
                 <tr>
@@ -26,7 +45,7 @@
         </div>
     </div>
 
-    <div class="card-body col-md-6 grid-margin stretch-card">
+    <div class="card-body col-md-7 grid-margin stretch-card">
         <div class="card">
             {% if object_list %}
             <div class="owl-carousel owl-theme">   
@@ -54,26 +73,16 @@ type="text/javascript"></script>
 
 <script type="text/javascript">
 $('.owl-carousel').owlCarousel({
+    items: 1,
     dots:false,
     nav:false,
+    rewind:true,
+    margin:10,
     autoplay:true,
     autoplayTimeout:5000,
     autoplayHoverPause:true,
-    autoHeight:false,
-    loop:true,
-    margin:10,
     responsiveClass:true,
-    responsive:{
-        0:{
-            items:1,                            
-        },
-        600:{
-            items:1,                        
-        },
-        1000:{
-            items:1,                            
-        }
-    }
+
 })
 </script>
 {% endblock extrajs %}

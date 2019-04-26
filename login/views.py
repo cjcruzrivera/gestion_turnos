@@ -15,7 +15,7 @@ class LoginView(FormView):
     """ Login View"""
     form_class = AuthenticationForm
     template_name = "login/login.html"
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("core:index")
 
     def form_valid(self, form):
         login(self.request, form.get_user())

@@ -52,7 +52,8 @@ class IDView(TemplateView):
 
 def ServicioView(request, identificacion):
     if request.method == "GET":
-        return render(request, "turno/service_request.html", {'identificacion': identificacion})
+        servicios = Servicio.objects.all()
+        return render(request, "turno/service_request.html", {'identificacion': identificacion, 'servicios': servicios})
     else:
         servicio_id = request.POST.get('servicio')
         servicio = Servicio.objects.get(codigo=servicio_id)
