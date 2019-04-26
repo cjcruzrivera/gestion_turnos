@@ -50,3 +50,6 @@ def AtenderTurnoView(request, turno):
     # def get(self, request):
     # form = self.form_class
     # return render(request, self.template_name, {'form': form})
+
+def actualiza_turno(request):
+    pass
