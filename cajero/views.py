@@ -1,7 +1,8 @@
 from django.views.generic import CreateView, TemplateView, ListView
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
+from django.utils import timezone
 
 from turno.models import Turno
 from clientes.models import Cliente
@@ -38,7 +39,10 @@ def next_turno(request):
 def AtenderTurnoView(request, turno):
     usuario = request.user
     turno = Turno.objects.get(pk=turno)
-    cliente = turno.cliente
+    turno.hora_inicio_turno = timezone.now()
+    turno.cajero = usuario
+    turno.sucursal = usuario.sucursal
+    turno.save()
     form = ClienteForm()
     return render(request, 'cajero/atender_turno.html', {'form': form, 'usuario': usuario, 'turno': turno})
 
@@ -52,4 +56,19 @@ def AtenderTurnoView(request, turno):
     # return render(request, self.template_name, {'form': form})
 
 def actualiza_turno(request):
-    pass
+    accion = request.GET.get('accion', None)
+    id_turno = request.GET.get('id_turno', None)
+    turno = Turno.objects.get(pk=id_turno)
+
+    if accion == "finalizar":
+        turno.isAtendido = True
+        turno.hora_fin_turno = timezone.now()
+    elif accion == "cancelar":
+        turno.hora_fin_turno = timezone.now()
+
+    turno.save()
+
+    data = {
+        'update': True
+    }
+    return JsonResponse(data)
