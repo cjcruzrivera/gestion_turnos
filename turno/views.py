@@ -12,10 +12,6 @@ from servicio.models import Servicio
 from django.urls import reverse, reverse_lazy
 # Create your views here.
 
-
-
-
-
 class IDView(TemplateView):
     template_name = 'turno/id_request.html'
     form_class = IdForm
@@ -33,18 +29,15 @@ class IDView(TemplateView):
             cliente = Cliente.objects.filter(cedula=identificacion)
             if not cliente.exists():
                 Cliente.objects.create(cedula=identificacion)
-
-            if cliente.exists() and cliente.get().vip:
-                # El cliente existe por tanto el servicio es VIP
-                # Crear el turno y redireccionar a show_turno
-                pass
-            else:
-                #Redireccionar a seleccionar servicio
                 return HttpResponseRedirect(reverse('service_request', kwargs={'identificacion': identificacion}))
-                pass
-            # persona = Persona.objects.filter(ci="12345678901").exists()
-            # args = {'form': form , 'text': text}
-            # return render (request, 'service_request.html', {'text': text})
+            else:
+                cliente = cliente.get()
+                if cliente.vip:
+                    servicio_id = Servicio.objects.get(nombre='VIP').codigo
+                    turno = Turno.objects.create(cliente_id=cliente.id, servicio_id=servicio_id)
+                    turno.turno = turno.servicio.tipo.nombre + str(turno.id)
+                    turno.save()
+                    return HttpResponseRedirect(reverse('turno', kwargs={'identificacion': turno.id}))
 
         return HttpResponse('Error in form')
 
@@ -57,7 +50,7 @@ def ServicioView(request, identificacion):
     else:
         servicio_id = request.POST.get('servicio')
         cliente = Cliente.objects.get(cedula=identificacion)
-        turno = Turno.objects.create(cliente_id=cliente.id, servicio_id=servicio_id, sucursal_id=request.user.sucursal.codigo, cajero_id=request.user.id)
+        turno = Turno.objects.create(cliente_id=cliente.id, servicio_id=servicio_id)
         turno.turno = turno.servicio.tipo.nombre + str(turno.id)
         turno.save()
         return HttpResponseRedirect(reverse('turno', kwargs={'identificacion': turno.id}))
