@@ -9,7 +9,7 @@ class FabricaSucursalPrincipal(factory.django.DjangoModelFactory):
 	class Meta:
 		model = Sucursal
 	codigo = factory.Faker('pyint')
-	nombre = factory.Faker('name')
+	nombre = factory.Faker('company')
 	direccion = factory.Faker('address')
 	localidad = factory.Faker('city')
 	telefono = factory.Faker('phone_number')
@@ -20,7 +20,7 @@ class FabricaSucursalGeneral(factory.django.DjangoModelFactory):
 	class Meta:
 		model = Sucursal
 	codigo = factory.Faker('pyint')
-	nombre = factory.Faker('name')
+	nombre = factory.Faker('company')
 	direccion = factory.Faker('address')
 	localidad = factory.Faker('city')
 	telefono = factory.Faker('phone_number')
@@ -30,7 +30,7 @@ class FabricaSucursalGeneral(factory.django.DjangoModelFactory):
 class FabricaClientes(factory.django.DjangoModelFactory):
 	class Meta:
 		model = Cliente
-	cedula = factory.Faker('pyint')
+	cedula = factory.Faker('ean8')
 	nombre = factory.Faker('first_name')
 	apellidos = factory.Faker('last_name')
 	vip = factory.Faker('pybool')
