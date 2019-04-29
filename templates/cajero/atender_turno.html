@@ -59,7 +59,7 @@
                         <h4> TURNO: {{turno.turno}} </h4>
                     </div>
                     <div class="form-group" align="center">
-                        <button data-url="{% url 'actualiza_turno' %}" id="cancela" data-id="{{turno.id}}" class="btn btn-rounded btn-danger">Cancelar turno</button>
+                        <button data-url="{% url 'actualiza_turno' %}" id="cancelar" data-id="{{turno.id}}" class="btn btn-rounded btn-danger">Cancelar turno</button>
                         <button data-url="{% url 'actualiza_turno' %}" id="finalizar" data-id="{{turno.id}}" class="btn btn-rounded btn-success">Finalizar turno</button>
                         <button disabled data-url="{% url 'next_turno' %}" id="next" class="btn btn-rounded btn-primary">Siguiente turno</button>
                     </div>
@@ -74,6 +74,11 @@
 
 {% block extrajs %}
 <script>
+    $("#next").click(function () {
+        var url = $(this).attr('data-url');
+        location.href = url;
+    })
+
     function send_data_turno(accion, url_ajax, id_turno) {
 
         $.ajax({
@@ -84,7 +89,12 @@
 
             },
             success: function (respuesta) {
-                
+                if(respuesta.update){
+                    swal("Exito", accion+ " turno realizado correctamente" );
+                    $('#next').prop( "disabled", false );
+                    $('#cancelar').prop( "disabled", true );
+                    $('#finalizar').prop( "disabled", true );
+                }
             },
             error: function () {
                 console.log("No se ha podido obtener la información");
